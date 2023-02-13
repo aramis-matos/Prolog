@@ -1,0 +1,4 @@
+:- [spanish].
+:- [japanese].
+
+tran(Sp,Jp) :- spanish(Sp,[sentence],A,_),japanese(Jp,[sentence],A,_).

@@ -1,0 +1,17 @@
+root([niñ],[noun],[child],[entity]).
+root([alt],[adjective],[tall],[property]).
+gender(masculine,o).
+gender(feminine,a).
+plurality(plural,'s').
+plurality(singular,'').
+
+spanish(Word,Gender,Plural,Category,Tran,Properties) :- 
+root(A,Category,Tran,B),
+gender(Gender,C),
+plurality(Plural,D),
+append(A,[C,D],Y),
+atomic_list_concat(Y,Word),
+append(B,[Plural,Gender],Properties).
+
+listSpanish(Words) :- findall(X,spanish(X,_,_,_,_,_),Words).
+

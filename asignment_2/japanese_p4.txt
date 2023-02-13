@@ -1,0 +1,35 @@
+japanese([adamu],[nounphrase],[adam],[entity]).
+japanese([iivu],[nounphrase],[eve],[entity]).
+japanese([waraimausu],[verb,intransitive],[laughs],[property]).
+japanese([nakimasu],[verb,intransitive],[cries],[property]).
+japanese([mimasu],[verb,transitive],[watches],[relation]).
+japanese([tetsudaimasu],[verb,transitive],[helps],[relation]).
+
+japanese(A,[verbphrase],B,[property]):-
+	japanese(A,[verb,intransitive],B,[property]).
+
+japanese(A,[verbphrase],B,[property]):-
+    japanese(E,[nounphrase,accusative],F,[entity]),
+	japanese(C,[verb,transitive],D,[relation]),
+	append(E,C,A),
+	append(D,F,B).
+
+japanese(A,[sentence],B,[proposition]):-
+	japanese(C,[nounphrase,nominative],D,[entity]),
+	japanese(E,[verbphrase],F,[property]),
+	append(C,E,A),
+	append(D,F,B).
+
+japanese(A,[nounphrase,accusative],B,[entity]):-
+	japanese(C,[nounphrase],B,[entity]),
+	append(C,[o],A).
+
+japanese(A,[nounphrase,nominative],B,[entity]):-
+    japanese(C,[nounphrase],B,[entity]),
+    append(C,[ga],A).
+
+% Exercise 4
+% The grammar is not descriptively adequate for the 
+% entire japanse language. However, it is descriptively
+% adequate for the small subsection of sentences that the
+% grammar can generate.
