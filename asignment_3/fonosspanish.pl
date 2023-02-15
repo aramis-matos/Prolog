@@ -1,3 +1,5 @@
+:- [fullanswerMatosAramis].
+
 fono(X,[cns]) :- atom_codes(X,[112]).
 fono(X,[cns, son]) :- atom_codes(X,[98]).
 fono(X,[cns, ant, dst]) :- atom_codes(X, [116,810]).
@@ -50,6 +52,10 @@ nonmembers([H|T],List) :- not(member(H,List)),nonmembers(T,List).
 
 fono(X) :- fono(X,_).
 
+fonos(Fonos,Total) :- 
+    findall(A,fono(A,_),B),
+    Fonos = B,
+    length(Fonos,Total).
 
 
 
