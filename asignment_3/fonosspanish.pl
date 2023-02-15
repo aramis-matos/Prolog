@@ -40,14 +40,15 @@ fono(X,[rsn,sil,cnt,son,rlr,rtr]) :- atom_codes(X,[601]).
 
 allphones(A,B) :- findall(A,fono(A,_),B).
 
+members([],_).
+members([H|T],List) :- member(H, List),members(T,List).
 
+notmembers(List1,List2) :- not(members(List1,List2)).
 
+nonmembers([],_).
+nonmembers([H|T],List) :- not(member(H,List)),nonmembers(T,List).
 
-
-
-
-
-
+fono(X) :- fono(X,_).
 
 
 
