@@ -62,7 +62,7 @@ fonos(Fonos,Total) :-
 fono(X,Rpos,Rneg) :-
     fono(X,Y),
     members(Rpos,Y),
-    nonmembers(Y,Rneg).
+    nonmembers(Y,Rneg). 
 
 
 fonos(Fono,Rpos,Rneg) :- 
