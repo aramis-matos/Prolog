@@ -16,12 +16,14 @@ IPA que corresponde al fono en cuestión.
 
 /* cns, rsn, sil, cnt, lat, son, gle, glc rla, rlr, nas, lab, rnd, cor, ant, dst, dor, alt, baj, rtr */
 
+natClasses([cns,rsn,sil,cnt,str,lat,son,gle,rla,rlr,nas,lab,rnd,cor,ant,dst,dor,alt,baj,rtr]).
+
 
 fono(X,[cns, rsn, cnt, lat, son, ant]) :- atom_codes(X,[108]).
 
 fono(X,[cns, rsn, cnt, lat, son, ant, dst, alt]) :- atom_codes(X,[108,810]).
 
-fono(X,[cns, rns, cnt, lat, son, ant, alt]) :- atom_codes(X,[654]).
+fono(X,[cns, rsn, cnt, lat, son, ant, alt]) :- atom_codes(X,[654]).
 
 fono(X,[cns,rsn,cnt,son,ant]) :- atom_codes(X,[638]).
 
@@ -38,11 +40,24 @@ y sin acentos (liquida, lateral, rotica). Sus cláusulas deben ser reglas como:
 clase(X,Clase) :- fono(X,RasgosPos,RasgosNeg).
 */
 
-clase(X,liquida).
+clase(X,liquida) :- fono(X,[cns,rsn,cnt],[nas]).
 
-clase(X,lateral).
+clase(X,lateral) :- fono(X,[rsn,lat],[]).
 
-clase(X,rotica).
+clase(X,rotica) :- fono(X,[cns,rsn,cnt],[lat,nas]).
+
+fono(X,Rpos,Rneg) :-
+    fono(X,Y),
+    members(Rpos,Y),
+    nonmembers(Y,Rneg). 
+
+members([],_).
+members([H|T],List) :- member(H, List),members(T,List).
+
+nonmembers([],_).
+nonmembers([H|T],List) :- not(member(H,List)),nonmembers(T,List).
+
+
 
 
 /*
