@@ -44,19 +44,19 @@ fono(X,[rsn,sil,cnt,son,rla,lab,rnd,dor,rtr]) :- atom_codes(X,[111]).
 fono(X,[rsn,sil,cnt,son,lab,rnd,dor,alt,rtr]) :- atom_codes(X,[117]).
 fono(X,[rsn,sil,cnt,son,rlr,dor,rtr]) :- atom_codes(X,[601]).
 
-consonante(X,Clase) :- fono(X,[cns],[]), Clase = consonante.
-obstruyente(X,Clase) :- fono(X,[],[rsn]), Clase = obstruyente.
-oclusiva(X,Clase) :- fono(X,[],[rsn,cnt,str]),Clase = oclusiva.
-africada(X,Clase) :- fono(X,[str],[rsn,cnt]), Clase = africada.
-fricativa(X,Clase) :- fono(X,[cnt],[rsn]), Clase = fricativa.
-resonante(X,Clase) :- fono(X,[rsn],[]), Clase = resonante.
-nasal(X,Clase) :- fono(X,[cns,rsn],[]), Clase = nasal.
-aproximante(X,Clase) :- fono(X,[rsn,cnt],[nas]), Clase = aproximante.
-liquida(X,Clase) :- fono(X,[cns,rsn,cnt],[nas]), Clase = liquida.
-lateral(X,Clase) :- fono(X,[rsn,lat],[]), Clase = lateral.
-rotica(X,Clase) :- fono(X,[cns,rsn,cnt],[lat,nas]), Clase = rotica.
-vocoid(X,Clase) :- fono(X,[rsn],[cns]), Clase = vocoid.
-deslizada(X,Clase) :- fono(X,[rsn],[cns,sil]), Clase = deslizada.
+clase(X,consonante) :- fono(X,[cns],[]).
+clase(X,obstruyente) :- fono(X,[],[rsn]).
+clase(X,oclusiva) :- fono(X,[],[rsn,cnt,str]).
+clase(X,africada) :- fono(X,[str],[rsn,cnt]).
+clase(X,fricativa) :- fono(X,[cnt],[rsn]).
+clase(X,resonante) :- fono(X,[rsn],[]).
+clase(X,nasal) :- fono(X,[cns,rsn],[]).
+clase(X,aproximante) :- fono(X,[rsn,cnt],[nas]).
+clase(X,liquida) :- fono(X,[cns,rsn,cnt],[nas]).
+clase(X,lateral) :- fono(X,[rsn,lat],[]).
+clase(X,rotica) :- fono(X,[cns,rsn,cnt],[lat,nas]).
+clase(X,vocoid) :- fono(X,[rsn],[cns]).
+clase(X,deslizada) :- fono(X,[rsn],[cns,sil]).
 
 
 clase(X,Clase) :-
@@ -92,53 +92,53 @@ fonos(Fono,Rpos,Rneg) :-
     fono(Fono,Rpos).
 
 consonantes(Lista,Total) :-
-    findall(A,consonante(A,_),Lista),
+    findall(A,clase(A,consonante),Lista),
     length(Lista,Total).
 
 obstruyentes(Lista,Total) :-
-    findall(A,obstruyente(A,_),Lista),
+    findall(A,clase(A,obstruyente),Lista),
     length(Lista,Total).
 
 oclusivas(Lista,Total) :-
-    findall(A,oclusiva(A,_),Lista),
+    findall(A,clase(A,oclusiva),Lista),
     length(Lista,Total).
     
 africadas(Lista,Total) :-
-    findall(A,africada(A,_),Lista),
+    findall(A,clase(A,africada),Lista),
     length(Lista,Total).
 
 fricativas(Lista,Total) :-
-    findall(A,fricativa(A,_),Lista),
+    findall(A,clase(A,fricativa),Lista),
     length(Lista,Total).
 
 resonantes(Lista,Total) :-
-    findall(A,resonante(A,_),Lista),
+    findall(A,clase(A,resonante),Lista),
     length(Lista,Total).
 
 nasales(Lista,Total) :-
-    findall(A,nasal(A,_),Lista),
+    findall(A,clase(A,nasal),Lista),
     length(Lista,Total).
 
 aproximantes(Lista,Total) :-
-    findall(A,aproximante(A,_),Lista),
+    findall(A,clase(A,aproximante),Lista),
     length(Lista,Total).
 
 liquidas(Lista,Total) :-
-    findall(A,liquida(A,_),Lista),
+    findall(A,clase(A,liquida),Lista),
     length(Lista,Total).
 
 laterales(Lista,Total) :-
-    findall(A,lateral(A,_),Lista),
+    findall(A,clase(A,lateral),Lista),
     length(Lista,Total).
 
 roticas(Lista,Total) :-
-    findall(A,rotica(A,_),Lista),
+    findall(A,clase(A,rotica),Lista),
     length(Lista,Total).
 
 vocoides(Lista,Total) :-
-    findall(A,vocoid(A,_),Lista),
+    findall(A,clase(A,vocoid),Lista),
     length(Lista,Total).
 
 deslizadas(Lista,Total) :-
-    findall(A,deslizada(A,_),Lista),
+    findall(A,clase(A,deslizada),Lista),
     length(Lista,Total).
