@@ -67,8 +67,14 @@ y el segundo es el total de fonos en la lista. Escriba tres reglas que definan e
 En el cuerpo de la regla debe usar también el procedimiento length/2.
 */
 
-liquidas(Lista,Total).
+liquidas(Lista,Total) :-
+    findall(A,clase(A,liquida),Lista),
+    length(Lista,Total).
 
-laterales(Lista,Total).
+laterales(Lista,Total) :-
+    findall(A,clase(A,lateral),Lista),
+    length(Lista,Total).
 
-roticas(Lista,Total).
+roticas(Lista,Total) :-
+    findall(A,clase(A,rotica),Lista),
+    length(Lista,Total).
