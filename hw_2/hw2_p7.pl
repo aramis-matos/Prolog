@@ -1,9 +1,15 @@
 :- [phone].
 :- [properties].
 
-traits([cns,snt,nas,voi,cnt,lab,alv,pal,ant,vel,cor,sib,hih,mid,low,bck,ctr]).
+% [voi,cnt,]
 
-has_properties([],_,[]).
-has_properties([P|Ps], X, Ans) :-        
-    call(P,X),
-    has_properties(Ps,X,Ans).
+a :- 
+    sib(X),not(voi(X)).
+
+b :- 
+    cnt(X),not(bck(X)),not(cns(X)),not(ctr(X)).
+
+% Need to have at least one non-negated predicate. Output includes ʌ, no idea why since it's the low-mid back unrounded vowel
+
+c :-
+    lab(X),not(cnt(X)).
