@@ -21,7 +21,7 @@ fono(X,[cns,cnt,str,son,cor,dst]) :- atom_codes(X,[658]).
 fono(X,[cns,cnt,son,cor,dst,cor,alt]) :- atom_codes(X,[669]).
 fono(X,[cns,cnt,str,dor,alt,rtr]) :- atom_codes(X,[120]).
 fono(X,[cns,cnt,son,dor,alt,rtr]) :- atom_codes(X,[611]).
-fono(X,[cnt,gle]) :- atom_codes(X,[104]).
+fono(X,[cns,cnt,gle]) :- atom_codes(X,[104]).
 fono(X,[cns,str,cor,dst]) :- atom_codes(X,[679]).
 fono(X,[cns,str,son,cor,dst]) :- atom_codes(X,[676]).
 fono(X,[cns,rsn,son,nas,lab]) :- atom_codes(X,[109]).
@@ -57,6 +57,7 @@ clase(X,lateral) :- fono(X,[rsn,lat],[]).
 clase(X,rotica) :- fono(X,[cns,rsn,cnt],[lat,nas]).
 clase(X,vocoid) :- fono(X,[rsn],[cns]).
 clase(X,deslizada) :- fono(X,[rsn],[cns,sil]).
+clase(X,vocal) :- fono(X,[sil],[cns]).
 
 
 clase(X,Clase) :-
@@ -88,8 +89,8 @@ fono(X,Rpos,Rneg) :-
 
 fonos(Fono,Rpos,Rneg) :- 
     traits(X),
-    subtract(X, Rpos, Rneg),
-    fono(Fono,Rpos).
+    fono(Fono,Rpos),
+    subtract(X, Rpos, Rneg).
 
 consonantes(Lista,Total) :-
     findall(A,clase(A,consonante),Lista),
