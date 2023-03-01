@@ -168,10 +168,10 @@ rima(A) :-
 silaba(A,Len) :-
     ataque(B),
     rima([Nucleo|Coda]),
-    ((last(B,Ataque),
-    ((not(Ataque = j),not(Nucleo = i));
-    ((not(Ataque = w),not(Nucleo = u)))));
-    (B = [])),
+    % ((last(B,Ataque),
+    % ((not(Ataque = j),not(Nucleo = i));
+    % ((not(Ataque = w),not(Nucleo = u)))));
+    % (B = [])),
     append(B,[Nucleo|Coda],A),
     length(A, Len),
     Len =< 5.
