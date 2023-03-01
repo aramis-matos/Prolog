@@ -33,8 +33,8 @@ fono(X,[cns,rsn,son,nas,dor,alt,rtr]) :- atom_codes(X,[331]).
 fono(X,[cns,rsn,cnt,lat,son,cor,ant,dst]) :- atom_codes(X,[108,810]).
 fono(X,[cns,rsn,cnt,lat,son,cor,ant]) :- atom_codes(X,[108]).
 fono(X,[cns,rsn,cnt,lat,son,cor,dst,dor,alt]) :- atom_codes(X,[654]).
-fono(X,[cns,rsn,cnt,son,cor,ant]) :- atom_codes(X,[114]).
-fono(X,[cns,rsn,cnt,son,rla,cor,ant]) :- atom_codes(X,[638]).
+fono(X,[cns,rsn,cnt,son,rla,cor,ant]) :- atom_codes(X,[114]).
+fono(X,[cns,rsn,cnt,son,cor,ant]) :- atom_codes(X,[638]).
 fono(X,[rsn,cnt,son,cor,dst,dor,alt]) :- atom_codes(X,[106]).
 fono(X,[rsn,cnt,son,lab,rnd,dor,alt,rtr]) :- atom_codes(X,[119]).
 fono(X,[rsn,sil,cnt,son,rla,dor,alt]) :- atom_codes(X,[105]).
