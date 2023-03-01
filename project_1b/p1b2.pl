@@ -168,10 +168,10 @@ rima(A) :-
 silaba(A,Len) :-
     ataque(B),
     rima([Nucleo|Coda]),
-    (last(B,Ataque),
+    ((last(B,Ataque),
     ((not(Ataque = j),not(Nucleo = i));
-    (not(Ataque = w), not(Nucleo = u)));
-    B = []),
+    ((not(Ataque = w),not(Nucleo = u)))));
+    (B = [])),
     append(B,[Nucleo|Coda],A),
     length(A, Len),
     Len =< 5.
@@ -184,4 +184,40 @@ silabas(Lista,Len) :-
 silabas(Lista,Len,Total) :-
     findall(A,silaba(A,Len),B),
     list_to_set(B, Lista),
+    length(Lista,Total).
+
+ataques(Lista,Len,Total) :-
+    findall(A,ataque(A,Len),B),
+    list_to_set(B, Lista),
+    length(Lista,Total).
+
+ataque(A,Len) :-
+    ataque(A),
+    length(A,Len).
+
+rima(A,Len) :-
+    rima(A),
+    length(A,Len).
+
+rimas(Lista,Len,Total) :-
+    findall(A,rima(A,Len),B),
+    list_to_set(B,Lista),
+    length(Lista,Total).
+
+nucleo(A,Len) :-
+    nucleo(A),
+    length(A,Len).
+
+nucleos(Lista,Len,Total) :-
+    findall(A,nucleo(A,Len),B),
+    list_to_set(B,Lista),
+    length(Lista,Total).
+
+coda(A,Len) :-
+    coda(A),
+    length(A,Len).
+
+codas(Lista,Len,Total) :-
+    findall(A,coda(A,Len),B),
+    list_to_set(B,Lista),
     length(Lista,Total).
