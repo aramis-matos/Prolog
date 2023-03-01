@@ -11,9 +11,9 @@ ataque([A]) :-
 ataque([A]) :- 
     fono(A,Pos),
     clase(A,nasal),
-    (nonmembers([cnt],Pos);
-    nonmembers([rtr],Pos);
-    nonmembers([ant,dst],Pos)).
+    (nonmembers([cnt],Pos),
+    nonmembers([rtr],Pos),
+    notmembers([ant,dst],Pos)).
 
 ataque([A]) :-
     fono(A,Pos),
@@ -62,9 +62,9 @@ ataque([A,B]) :-
     fono(B,PosB),
     clase(A,nasal),
     clase(B,deslizada),
-    (nonmembers([cnt],PosA);
-    nonmembers([rtr],PosA),
-    nonmembers(ant,dst),PosA),
+    notmembers([cnt],PosA),
+    notmembers([rtr],PosA),
+    notmembers([ant,dst],PosA),
     members([lab],PosB).
 
 ataque([A,B]) :- %Working but creteria doesn't exist
@@ -88,8 +88,8 @@ ataque([A,B]) :-
     fono(B,PosB),
     clase(A,obstruyente),
     clase(B,deslizada),
-    (nonmembers([cns,cor,dst,dor,alt],PosA);
-    nonmembers([cor,dst,str],PosA);
+    (notmembers([cns,cor,dst,dor,alt],PosA),
+    notmembers([cor,dst,str],PosA);
     not(fono(A,[cns,cnt,str,dor,alt,rtr]))),
     members([cor],PosB).
 
@@ -99,8 +99,8 @@ ataque([A,B]) :-
     clase(A,nasal),
     clase(B,deslizada),
     (nonmembers([cnt],PosA);
-    nonmembers([ant,dst],PosA);
-    nonmembers([cor,dor],PosA);
+    notmembers([ant,dst],PosA),
+    notmembers([cor,dor],PosA);
     nonmembers([rtr],PosA)),
     members([cor],PosB).
 
@@ -130,8 +130,8 @@ nucleo([A,B]) :-
     fono(B,_),
     clase(A,vocal),
     clase(B,deslizada),
-    (nonmembers([rlr],PosA);
-    nonmembers([alt,rlr],PosA)).
+    (nonmembers([rlr],PosA),
+    notmembers([alt,rlr],PosA)).
 
 
 coda([]).
@@ -139,12 +139,12 @@ coda([]).
 coda([A]) :-
     fono(A,PosA),
     clase(A,obstruyente),
-    nonmembers([cor,dor],PosA),
-    nonmembers([str,dst],PosA).
+    (notmembers([cor,dor],PosA),
+    notmembers([str,dst],PosA)).
 
 coda([A]) :- %Works but no match
     fono(A,PosA),
-    clase(A,obstruyente),
+    clase(A,consonante),
     clase(A,resonante),
     nonmembers([rla],PosA).
 
@@ -165,11 +165,23 @@ rima(A) :-
     length(A,Len),
     Len =< 3.
     
-silaba(A) :-
+silaba(A,Len) :-
     ataque(B),
-    rima(C),
-    append(B,C,A),
+    rima([Nucleo|Coda]),
+    (last(B,Ataque),
+    ((not(Ataque = j),not(Nucleo = i));
+    (not(Ataque = w), not(Nucleo = u)));
+    B = []),
+    append(B,[Nucleo|Coda],A),
     length(A, Len),
-    Len =< 5,
-    
-    
+    Len =< 5.
+
+silabas(Lista,Len) :-
+    findall(A,silaba(A,_),B),
+    list_to_set(B, Lista),
+    length(Lista,Len).
+
+silabas(Lista,Len,Total) :-
+    findall(A,silaba(A,Len),B),
+    list_to_set(B, Lista),
+    length(Lista,Total).

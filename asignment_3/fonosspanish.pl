@@ -18,10 +18,10 @@ fono(X,[cns,cnt,str,cor,ant]) :- atom_codes(X,[115]).
 fono(X,[cns,cnt,str,son,cor,ant]) :- atom_codes(X,[122]).
 fono(X,[cns,cnt,str,cor,dst]) :- atom_codes(X,[643]).
 fono(X,[cns,cnt,str,son,cor,dst]) :- atom_codes(X,[658]).
-fono(X,[cns,cnt,son,cor,dst,cor,alt]) :- atom_codes(X,[669]).
+fono(X,[cns,cnt,son,cor,dst,dor,alt]) :- atom_codes(X,[669]).
 fono(X,[cns,cnt,str,dor,alt,rtr]) :- atom_codes(X,[120]).
 fono(X,[cns,cnt,son,dor,alt,rtr]) :- atom_codes(X,[611]).
-fono(X,[cns,cnt,gle]) :- atom_codes(X,[104]).
+fono(X,[cnt,gle]) :- atom_codes(X,[104]).
 fono(X,[cns,str,cor,dst]) :- atom_codes(X,[679]).
 fono(X,[cns,str,son,cor,dst]) :- atom_codes(X,[676]).
 fono(X,[cns,rsn,son,nas,lab]) :- atom_codes(X,[109]).
@@ -45,6 +45,7 @@ fono(X,[rsn,sil,cnt,son,lab,rnd,dor,alt,rtr]) :- atom_codes(X,[117]).
 fono(X,[rsn,sil,cnt,son,rlr,dor,rtr]) :- atom_codes(X,[601]).
 
 clase(X,consonante) :- fono(X,[cns],[]).
+clase(h,consonante) :- fono(h).
 clase(X,obstruyente) :- fono(X,[],[rsn]).
 clase(X,oclusiva) :- fono(X,[],[rsn,cnt,str]).
 clase(X,africada) :- fono(X,[str],[rsn,cnt]).
