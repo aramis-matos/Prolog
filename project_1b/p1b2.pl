@@ -29,7 +29,7 @@ ataque([A,B]) :- %fix this nonmembers
     fono(B,PosB),
     clase(A,obstruyente),
     clase(B,rotica),
-    nonmembers([str,cor,dor],PosA),
+    notmembers([str,cor,dor],PosA),
     nonmembers([rla],PosB).
     
 ataque([A,B]) :-

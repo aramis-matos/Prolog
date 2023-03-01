@@ -42,7 +42,7 @@ fono(X,[rsn,sil,cnt,son,rla,dor]) :- atom_codes(X,[101]).
 fono(X,[rsn,sil,cnt,son,rla,dor,baj,rtr]) :- atom_codes(X,[97]).
 fono(X,[rsn,sil,cnt,son,rla,lab,rnd,dor,rtr]) :- atom_codes(X,[111]).
 fono(X,[rsn,sil,cnt,son,lab,rnd,dor,alt,rtr]) :- atom_codes(X,[117]).
-fono(X,[rsn,sil,cnt,son,rla,dor,rtr]) :- atom_codes(X,[601]).
+fono(X,[rsn,sil,cnt,son,rlr,dor,rtr]) :- atom_codes(X,[601]).
 
 clase(X,consonante) :- fono(X,[cns],[]).
 clase(h,consonante) :- fono(h).
