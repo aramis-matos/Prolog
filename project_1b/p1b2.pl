@@ -18,7 +18,7 @@ ataque([A]) :-
 ataque([A]) :-
     fono(A,Pos),
     clase(A,liquida),
-    nonmembers([ant,dst],Pos).
+    notmembers([ant,dst],Pos).
 
 ataque([A]) :-
     fono(A),
@@ -72,7 +72,7 @@ ataque([A,B]) :- %Working but creteria doesn't exist
     fono(B,PosB),
     clase(A,lateral),
     clase(B,deslizada),
-    nonmembers([ant,dst],PosA),
+    notmembers([ant,dst],PosA),
     members([lab],PosB).
 
 ataque([A,B]) :-
@@ -89,7 +89,7 @@ ataque([A,B]) :-
     clase(A,obstruyente),
     clase(B,deslizada),
     (notmembers([cns,cor,dst,dor,alt],PosA),
-    notmembers([cor,dst,str],PosA);
+    notmembers([cor,dst,str],PosA),
     not(fono(A,[cns,cnt,str,dor,alt,rtr]))),
     members([cor],PosB).
 
@@ -100,8 +100,8 @@ ataque([A,B]) :-
     clase(B,deslizada),
     (nonmembers([cnt],PosA);
     notmembers([ant,dst],PosA),
-    notmembers([cor,dor],PosA);
-    nonmembers([rtr],PosA)),
+    notmembers([cor,dor],PosA),
+    notmembers([rtr],PosA)),
     members([cor],PosB).
 
 ataque([A,B]) :-
@@ -168,10 +168,7 @@ rima(A) :-
 silaba(A,Len) :-
     ataque(B),
     rima([Nucleo|Coda]),
-    % ((last(B,Ataque),
-    % ((not(Ataque = j),not(Nucleo = i));
-    % ((not(Ataque = w),not(Nucleo = u)))));
-    % (B = [])),
+    filter(B,Nucleo),
     append(B,[Nucleo|Coda],A),
     length(A, Len),
     Len =< 5.
@@ -221,3 +218,23 @@ codas(Lista,Len,Total) :-
     findall(A,coda(A,Len),B),
     list_to_set(B,Lista),
     length(Lista,Total).
+
+
+
+filter(Ataque,Nucleo) :-
+    not((last(Ataque,X),
+    fonos(X,XPos,XNeg),
+    fonos(Nucleo,NPos,NNeg),
+    clase(X,deslizada),
+    member(alt,NPos),
+    ((member(rtr,XNeg),member(rtr,NNeg));
+    (member(rtr,XPos),member(rtr,NPos))))).
+
+filterIJWU([],_).
+
+filterIJWU(X,Y) :-
+    last(X,Z),
+    not((Z = j,Y = i)),
+    not((Z = w,Y = u)).
+    
+    
