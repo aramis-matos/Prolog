@@ -1,5 +1,5 @@
-:- ["../asignment_3/fullanswerMatosAramis.pl"].
-:- ["../asignment_3/fonosspanish.pl"].
+:- ["fullanswer.pl"].
+:- ["fonosyrasgosMatosAramis.pl"].
 
 ataque([]).
 
