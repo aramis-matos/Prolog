@@ -1,8 +1,8 @@
+:- [fonosspanish].
 /*
 LING 5080 Laboratorio 4: Sílabas
 
 Nombre: Aramis E. Matos Nieves
-
 
 A. Formule un procedimiento silaba/1 que reconozca sílabas con la descripción estructural 
 adecuada.
