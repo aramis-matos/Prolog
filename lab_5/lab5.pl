@@ -19,11 +19,11 @@ arc(5,3,C,0) :- atom_codes(C,[43]).
 arc(2,3,C,0) :- atom_codes(C,[43]).
 arc(6,3,C,0) :- atom_codes(C,[43]).
 arc(3,4,r,r).
-arc(4,8,C,0) :- atom_codes(C,[233]).
+arc(4,8,C,C) :- atom_codes(C,[233]).
 arc(4,7,C,C) :- atom_codes(C,[225]).
 arc(4,9,e,e).
 arc(8,10,C,0) :- atom_codes(C,[43]).
-arc(10,13,C,C) :- atom_codes(C,[949]).
+arc(10,13,C,0) :- atom_codes(C,[949]).
 arc(10,14,i,i).
 arc(14,15,s,s).
 arc(7,11,C,0) :- atom_codes(C,[43]).
@@ -34,10 +34,26 @@ arc(9,12,C,0) :- atom_codes(C,[43]).
 arc(12,19,m,m).
 arc(19,20,o,o).
 arc(20,21,s,s).
-arc(1,21,d,d).
-arc(21,3,C,0) :- atom_codes(C,[43]).
+arc(0,23,t,t).
+arc(0,23,v,v).
+arc(0,24,p,p).
+arc(0,25,s,s).
+arc(23,26,e,e).
+arc(24,26,o,o).
+arc(25,27,a,a).
+arc(26,28,n,n).
+arc(27,28,l,l).
+arc(28,29,d,d).
+arc(29,30,C,0) :- atom_codes(C,[43]).
+arc(30,31,C,0) :- atom_codes(C,[949]).
+arc(31,3,C,0) :- atom_codes(C,[43]).
 
-
+final_state(13).
+final_state(15).
+final_state(16).
+final_state(17).
+final_state(18).
+final_state(21).
 
 transduce(Start, Final, [U | UnderlyingString], SurfaceString) :-
 	arc(Start, Next, U, 0),
@@ -56,12 +72,6 @@ transduce(Start, Final, [U | UnderlyingString], [S | SurfaceString]) :-
 transduce(Final, Final, [], []) :-
 	final_state(Final).
 
-final_state(13).
-final_state(15).
-final_state(16).
-final_state(17).
-final_state(18).
-final_state(21).
 
 take(N, _, Xs) :- N =< 0, !, N =:= 0, Xs = [].
 take(_, [], []).
