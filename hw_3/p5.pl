@@ -12,7 +12,7 @@ amharic([y,i],[prefix]).
 amharic([m,a],[prefix]).
 amharic([a,l],[suffix]).
 amharic([o],[suffix]).
-amharic([a,a],[circumfix]).
+amharic([a,a],[circumfix]). 
 
 
 amharic(Verb,[verb,perfective]) :-
