@@ -45,3 +45,18 @@ p0(p0(a),[[obl,udp]]) --> [a].
 p0(p0(al),[[obl,unp]]) --> [al].
 p0(p0(de),[[obl,udp]]) --> [de].
 p0(p0(del),[[obl,unp]]) --> [del].
+
+% E.
+v0(v0(vio),[[pret],[_,3,s],[udp],[acc]]) --> [vio].
+v0(v0(vieron),[[pret],[_,3,p],[udp],[acc]]) --> [vieron].
+v0(v0(conocio),[[pret],[_,3,s],[udp],[acc]]) --> [conocio].
+v0(v0(conocieron),[[pret],[_,3,p],[udp],[acc]]) --> [conocieron].
+v0(v0(saludo),[[pret],[_,3,s],[udp],[acc]]) --> [saludo].
+v0(v0(saludaron),[[pret],[_,3,p],[udp],[acc]]) --> [saludaron].
+v0(v0(llego),[[pret],[_,3,s],[upp],[acc]]) --> [llego].
+v0(v0(llegaron),[[pret],[_,3,p],[upp],[acc]]) --> [llegaron].
+v0(v0(vivia),[[pret],[_,3,s],[upp],[acc]]) --> [vivia].
+v0(v0(vivian),[[pret],[_,3,p],[upp],[acc]]) --> [vivian].
+v0(v0(estaba),[[pret],[_,3,s],[upp],[acc]]) --> [estaba].
+v0(v0(estaban),[[pret],[_,3,p],[upp],[acc]]) --> [estaban].
+v0(v0(habia),[[pret],[_,3,s],[udp],[acc]]) --> [habia].
