@@ -1,22 +1,65 @@
 :- [lab_6].
 % :- use_rendering(svgtree, [list(false)]).		
-
+:- use_module(library(lists)).
 :- table np/4, vp/4, pp/4, ap/4, dp/4, ip/4.	
 
 
+% B
+% c0(c0(ec),[decl]) --> [].			
+% i0(i0(fin),[[nom],_,_]) --> [].		
 
-c0(c0(ec),[decl]) --> [].			
-i0(i0(fin),[[nom],_,_]) --> [].		
+% pp(pp(Pbar),_) --> pbar(Pbar,_).
+% pp(S,L,M) :- pp(S,_,L,M).
+% pbar(pbar(P0,NP),_) --> p0(P0,_),np(NP,_).
+% ap(ap(Int0,Abar),_) --> int0(Int0,_),abar(Abar,_).
+% ap(ap(Abar),_) --> abar(Abar,_).
+% ap(S,L,M) :- ap(S,_,L,M).
+% abar(abar(A0),_) --> a0(A0,_).
+% np(np(Nbar,AP),_) --> nbar(Nbar,_),ap(AP,_).
+% np(np(Nbar),_) --> nbar(Nbar,_).
+% np(S,L,M) :- np(S,_,L,M).
+% nbar(nbar(N0),_) --> n0(N0,_).
+% dp(dp(Dbar),_) --> dbar(Dbar,_).
+% dp(S,L,M) :- dp(S,_,L,M).
+% dbar(dbar(D0,NP),_) -->
+%     d0(D0,_),np(NP,_).
 
-intp(intp(Intbar),_) --> intbar(Intbar).
-intbar(intbar(Int0)) --> int0(Int0,_).
-ap(ap(Abar),_) --> abar(Abar).
-ap(_,(Abar)) --> abar(_,Abar).
-abar(abar(A0)) --> a0(A0,_).
-abar(I0,abar(A0)) --> intp(I0,_),a0(A0,_).
-np(np(Np),_) --> nbar(Np).
-nbar(nbar(N0),AP) --> n0(N0,_),ap(AP,_).
-nbar(nbar(N0)) --> n0(N0,_).
-dbar(dbar(D0),NP) --> d0(D0,_),np(NP,_).
-dp(dp(Dbar),_) --> dbar(Dbar,_).		
-    					
+
+% C
+% pp(pp(Pbar),_) --> pbar(Pbar,_).
+% pp(S,L,M) :- pp(S,_,L,M).
+% pbar(pbar(P0,NP),_) --> p0(P0,_),np(NP,_).
+% ap(ap(Int0,Abar),T) --> int0(Int0,_),abar(Abar,T).
+% ap(ap(Abar),T) --> abar(Abar,T).
+% ap(S,L,M) :- ap(S,_,L,M).
+% abar(abar(A0),T) --> a0(A0,T).
+% np(np(Nbar,AP),[Case,Phi,[]]) --> 
+%     nbar(Nbar,[Case,Phi,[]]),ap(AP,[_,Phi,_]).
+% np(np(Nbar),T) --> nbar(Nbar,T).
+% np(S,L,M) :- np(S,_,L,M).
+% nbar(nbar(N0),T) --> n0(N0,T).
+% dp(dp(Dbar),_) --> dbar(Dbar,_).
+% dp(S,L,M) :- dp(S,_,L,M).
+% dbar(dbar(D0,NP),[Case,Phi,[unp]]) -->
+%     d0(D0,[Case,Phi,[unp]]),np(NP,[_,Phi,_]).
+
+
+% D
+pp(pp(Pbar),_) --> pbar(Pbar,_).
+pp(S,L,M) :- pp(S,_,L,M).
+pbar(pbar(P0,NP),_) -->
+    p0(P0,_),
+    dp(NP,_).
+ap(ap(Int0,Abar),T) --> int0(Int0,_),abar(Abar,T).
+ap(ap(Abar),T) --> abar(Abar,T).
+ap(S,L,M) :- ap(S,_,L,M).
+abar(abar(A0),T) --> a0(A0,T).
+np(np(Nbar,AP),[Case,Phi,[]]) --> 
+    nbar(Nbar,[Case,Phi,[]]),ap(AP,[_,Phi,_]).
+np(np(Nbar),T) --> nbar(Nbar,T).
+np(S,L,M) :- np(S,_,L,M).
+nbar(nbar(N0),T) --> n0(N0,T).
+dp(dp(Dbar),_) --> dbar(Dbar,_).
+dp(S,L,M) :- dp(S,_,L,M).
+dbar(dbar(D0,NP),[Case,Phi,[unp]]) -->
+    d0(D0,[Case,Phi,[unp]]),np(NP,[_,Phi,_]).

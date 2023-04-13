@@ -15,8 +15,8 @@ n0(n0(telescopio),[[com,inanim],[m,3,s],[]]) --> [telescopio].
 n0(n0(telescopios),[[com,inanim],[m,3,p],[]]) --> [telescopios].
 n0(n0(observatorio),[[com,inanim],[m,3,s],[]]) --> [observatorio].
 n0(n0(observatorios),[[com,inanim],[m,3,p],[]]) --> [observatorios].
-n0(n0(biblioteca),[[com,inanim],[m,3,s],[]]) --> [biblioteca].
-n0(n0(bibliotecas),[[com,inanim],[m,3,p],[]]) --> [bibliotecas].
+n0(n0(biblioteca),[[com,inanim],[f,3,s],[]]) --> [biblioteca].
+n0(n0(bibliotecas),[[com,inanim],[f,3,p],[]]) --> [bibliotecas].
 n0(n0(noam),[[prop,hum],[m,3,s],[]]) --> [noam].
 n0(n0(boston),[[prop,loc],[m,3,s],[]]) --> [boston].
 n0(n0(binoculares),[[com,inanim],[m,3,p],[]]) --> [binoculares].
@@ -48,6 +48,7 @@ d0(d0(unos),[[nom,acc,obl],[m,3,p],[unp]]) --> [unos].
 d0(d0(unas),[[nom,acc,obl],[f,3,p],[unp]]) --> [unas]. 
 d0(d0(su),[[acc,obl,gen],[_,3,s],[unp]]) --> [su]. 
 d0(d0(sus),[[acc,obl,gen],[_,3,p],[unp]]) --> [sus]. 
+d0(d0(ec),[[acc,obl,gen],[_,3,p],[unp]]) --> []. 
 
 % C.
 d0(d0(el),[[nom,obl],[m,3,s],[]]) --> [el].
@@ -60,7 +61,7 @@ d0(d0(pro),[[nom,obl],[_,3,_],[]]) --> [].
 p0(p0(en),[[obl],[udp]]) --> [en].
 p0(p0(con),[[obl],[udp]]) --> [con].
 p0(p0(para),[[obl],[udp]]) --> [para].
-p0(p0(a),[[obl],[udp]]) --> [a].
+p0(p0(a),[[obl,acc],[udp]]) --> [a].
 p0(p0(al),[[obl],[unp]]) --> [al].
 p0(p0(de),[[obl],[udp]]) --> [de].
 p0(p0(del),[[obl],[unp]]) --> [del].
@@ -81,6 +82,6 @@ v0(v0(estaban),[[pret],[_,3,p],[upp],[acc]]) --> [estaban].
 v0(v0(habia),[[pret],[_,3,s],[udn],[acc]]) --> [habia].
 
 % Extras
-int0(int0(muy),[[],[_,3,s],[uap]]) --> [muy].
+int0(int0(muy),[[],[],[]]) --> [muy].
 
-adv0(adv(ayer),[[pret],[],[uvp]]) --> [ayer].
+adv0(adv(ayer),[[pret],[temporal],[]]) --> [ayer].
