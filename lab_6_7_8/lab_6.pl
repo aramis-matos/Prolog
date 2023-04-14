@@ -48,8 +48,7 @@ d0(d0(unos),[[nom,acc,obl],[m,3,p],[unp]]) --> [unos].
 d0(d0(unas),[[nom,acc,obl],[f,3,p],[unp]]) --> [unas]. 
 d0(d0(su),[[acc,obl,gen],[_,3,s],[unp]]) --> [su]. 
 d0(d0(sus),[[acc,obl,gen],[_,3,p],[unp]]) --> [sus]. 
-d0(d0(ec),[[acc,obl,gen],[_,3,p],[unp]]) --> []. 
-
+d0(d0(ec),[[acc,obl,gen],[_,3,_],[unp]]) --> [].
 % C.
 d0(d0(el),[[nom,obl],[m,3,s],[]]) --> [el].
 d0(d0(ella),[[nom,obl],[f,3,s],[]]) --> [ella].
@@ -73,15 +72,17 @@ v0(v0(conocio),[[pret],[_,3,s],[udp],[acc]]) --> [conocio].
 v0(v0(conocieron),[[pret],[_,3,p],[udp],[acc]]) --> [conocieron].
 v0(v0(saludo),[[pret],[_,3,s],[udp],[acc]]) --> [saludo].
 v0(v0(saludaron),[[pret],[_,3,p],[udp],[acc]]) --> [saludaron].
-v0(v0(llego),[[pret],[_,3,s],[],[acc]]) --> [llego].
+v0(v0(llego),[[pret],[_,3,s],[],[]]) --> [llego].
 v0(v0(llegaron),[[pret],[_,3,p],[],[]]) --> [llegaron].
 v0(v0(vivia),[[pret],[_,3,s],[upp],[acc]]) --> [vivia].
 v0(v0(vivian),[[pret],[_,3,p],[upp],[acc]]) --> [vivian].
+v0(v0(vivia),[[pret],[_,3,s],[],[]]) --> [vivia].
+v0(v0(vivian),[[pret],[_,3,p],[],[]]) --> [vivian].
 v0(v0(estaba),[[pret],[_,3,s],[upp],[acc]]) --> [estaba].
 v0(v0(estaban),[[pret],[_,3,p],[upp],[acc]]) --> [estaban].
 v0(v0(habia),[[pret],[_,3,s],[udn],[acc]]) --> [habia].
 
 % Extras
-int0(int0(muy),[[],[],[]]) --> [muy].
+int0(int0(muy),[[],[_,3,s],[uap]]) --> [muy].
 
-adv0(adv(ayer),[[pret],[temporal],[]]) --> [ayer].
+adv0(adv(ayer),[[pret],[],[uvp]]) --> [ayer].
