@@ -20,6 +20,15 @@ n0(n0(bibliotecas),[[com,inanim],[f,3,p],[]]) --> [bibliotecas].
 n0(n0(noam),[[prop,hum],[m,3,s],[]]) --> [noam].
 n0(n0(boston),[[prop,loc],[m,3,s],[]]) --> [boston].
 n0(n0(binoculares),[[com,inanim],[m,3,p],[]]) --> [binoculares].
+n0(n0(barbara),[[prop,hum],[m,3,s],[]]) --> [barbara].
+n0(n0(david),[[prop,hum],[m,3,s],[]]) --> [david].
+n0(n0(hombre),[[com,anim],[m,3,s],[]]) --> [hombre].
+n0(n0(hombres),[[com,anim],[m,3,p],[]]) --> [hombres].
+n0(n0(irene),[[prop,hum],[f,3,s],[]]) --> [irene].
+n0(n0(mujer),[[com,anim],[f,3,s],[]]) --> [mujeres].
+n0(n0(mujeres),[[com,anim],[f,3,p],[]]) --> [mujeres].
+n0(n0(universidad),[[com,anim],[f,3,s],[]]) --> [universidad].
+n0(n0(universidades),[[com,anim],[f,3,p],[]]) --> [universidades].
 
 
 a0(a0(famoso),[[],[m,3,s],[]]) --> [famoso].
@@ -65,7 +74,6 @@ p0(p0(al),[[obl],[unp]]) --> [al].
 p0(p0(de),[[obl],[udp]]) --> [de].
 p0(p0(del),[[obl],[unp]]) --> [del].
 
-% E.
 v0(v0(vio),[[pret],[_,3,s],[udp],[acc]]) --> [vio].
 v0(v0(vieron),[[pret],[_,3,p],[udp],[acc]]) --> [vieron].
 v0(v0(conocio),[[pret],[_,3,s],[udp],[acc]]) --> [conocio].
@@ -76,13 +84,50 @@ v0(v0(llego),[[pret],[_,3,s],[],[]]) --> [llego].
 v0(v0(llegaron),[[pret],[_,3,p],[],[]]) --> [llegaron].
 v0(v0(vivia),[[pret],[_,3,s],[upp],[acc]]) --> [vivia].
 v0(v0(vivian),[[pret],[_,3,p],[upp],[acc]]) --> [vivian].
-v0(v0(vivia),[[pret],[_,3,s],[],[]]) --> [vivia].
 v0(v0(vivian),[[pret],[_,3,p],[],[]]) --> [vivian].
 v0(v0(estaba),[[pret],[_,3,s],[upp],[acc]]) --> [estaba].
 v0(v0(estaban),[[pret],[_,3,p],[upp],[acc]]) --> [estaban].
-v0(v0(habia),[[pret],[_,3,s],[udn],[acc]]) --> [habia].
+v0(v0(habia),[[pret],[_,3,s],[udp],[acc]]) --> [habia].
+v0(v0(dijo),[[pret],[_,3,s],[ucp],[acc]]) --> [dijo].
+v0(v0(dijeron),[[pret],[_,3,p],[ucp],[acc]]) --> [dijeron].
+v0(v0(pregunto),[[pret],[_,3,s],[ucp],[acc]]) --> [pregunto].
+v0(v0(preguntaron),[[pret],[_,3,p],[ucp],[acc]]) --> [reguntaron].
 
+v0(v0(ver),[[],[],[udp],[acc]]) --> [ver].
+v0(v0(conocer),[[],[],[udp],[acc]]) --> [conocer].
+v0(v0(saludar),[[],[],[udp],[acc]]) --> [saludar].
+v0(v0(llegar),[[],[],[],[]]) --> [llegar].
+v0(v0(vivir),[[],[],[upp],[acc]]) --> [vivir].
+v0(v0(estar),[[],[],[upp],[acc]]) --> [estar].
+v0(v0(haber),[[],[],[udp],[acc]]) --> [haber].
+v0(v0(decir),[[],[],[udp],[acc]]) --> [decir].
+v0(v0(preguntar),[[],[],[udp],[acc]]) --> [preguntar].
+
+v0(v0(viendo),[[],[],[udp],[acc]]) --> [viendo].
+v0(v0(conociendo),[[],[],[udp],[acc]]) --> [conociendo].
+v0(v0(saludando),[[],[],[udp],[acc]]) --> [conociendo].
+v0(v0(llegando),[[],[],[],[]]) --> [llegando].
+v0(v0(viviendo),[[],[],[upp],[acc]]) --> [viviendo].
+v0(v0(estando),[[],[],[upp],[acc]]) --> [estando].
+v0(v0(habiendo),[[],[],[udp],[acc]]) --> [habiendo].
+v0(v0(diciendo),[[],[],[udp],[acc]]) --> [diciendo].
+v0(v0(preguntando),[[],[],[udp],[acc]]) --> [preguntaron].
+
+v0(v0(haberVisto),[[],[],[udp],[acc]]) --> [haber,visto].
+v0(v0(haberConocido),[[],[],[udp],[acc]]) --> [haber,conocido].
+v0(v0(haberSaludado),[[],[],[udp],[acc]]) --> [haber,saludado].
+v0(v0(haberLlegado),[[],[],[],[]]) --> [haber,llegado].
+v0(v0(haberVivido),[[],[],[upp],[acc]]) --> [haber,vivido].
+v0(v0(haberEstado),[[],[],[upp],[acc]]) --> [haber,estado].
+v0(v0(haberVivido),[[],[],[udp],[acc]]) --> [haber,vivido].
+v0(v0(haberDicho),[[],[],[udp],[acc]]) --> [haber,dicho].
+v0(v0(haberPreguntado),[[],[],[udp],[acc]]) --> [haber,preguntado].
 % Extras
 int0(int0(muy),[[],[_,3,s],[uap]]) --> [muy].
 
 adv0(adv(ayer),[[pret],[],[uvp]]) --> [ayer].
+
+c0(c0(ec),[decl]) --> [].
+c0(c0(que),[decl]) --> [que].
+c0(c0(si),[decl]) --> [si].
+i0(i0(fin),[[nom],_,_]) --> [].

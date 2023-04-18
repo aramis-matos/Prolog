@@ -1,7 +1,5 @@
 :- [lab_6].
 % :- use_rendering(svgtree, [list(false)]).		
-:- use_module(library(lists)).
-:- table np/4, vp/4, pp/4, ap/4, dp/4, ip/4.	
 
 
 % B
@@ -36,9 +34,11 @@ np(np(Nbar,AP),[Case,Phi,[]]) -->
 np(np(Nbar),T) --> nbar(Nbar,T).
 np(S,L,M) :- np(S,_,L,M).
 nbar(nbar(N0),T) --> n0(N0,T).
-dp(dp(Dbar),_) --> dbar(Dbar,_).
+dp(dp(Dbar),T) --> dbar(Dbar,T).
 dp(S,L,M) :- dp(S,_,L,M).
-dbar(dbar(D0,NP),[Case,Phi,[unp]]) -->
+dbar(dbar(D0),[Case,Phi,[]]) -->
+    d0(D0,[Case,Phi,[]]).
+dbar(dbar(D0,NP),[Case,Phi,[]]) -->
     d0(D0,[Case,Phi,[unp]]),np(NP,[_,Phi,_]).
 
 

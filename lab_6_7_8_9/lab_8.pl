@@ -10,8 +10,8 @@ vbar(vbar(V0,DP),[Time,Phi,[],Vcase]) -->
     {intersection(Vcase,Dcase,Int),
       \+ Int =[],
     Args = [udp]}.
-vbar(vbar(V0),[_,_,Args,_]) -->
-    v0(V0,[_,_,Args,_]),
+vbar(vbar(V0),[Time,Phi,Args,[]]) -->
+    v0(V0,[Time,Phi,Args,[]]),
     {Args = []}.
 vbar(vbar(V0,PP),[Time,Phi,[],Vcase]) -->
     v0(V0,[Time,Phi,Args,Vcase]),
