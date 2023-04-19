@@ -1,9 +1,11 @@
 :- [lab_8].
+:- discontiguous vbar/4.
 
 cp(cp(Cbar),T) -->
     cbar(Cbar,T).
 cbar(cbar(C0,IP),[decl]) -->
-    c0(C0),ip(IP,_).
+    c0(C0,[decl]),
+    ip(IP,_).
 advp(advp(Advbar),T) -->
     advbar(Advbar,T).
 advbar(advbar(Adv0),T) -->
@@ -29,3 +31,8 @@ ibar(ipbar(I0,VP),[Case,Phi,Tense]) -->
     {\+ Tense = [],
     \+ Phi = [],
     Case = [nom]}.
+vbar(vbar(V0,CP),[Time,Phi,[],Vcase]) -->
+    v0(V0,[Time,Phi,Args,Vcase]),
+    cp(CP,T),
+    { Args = [ucp],
+    \+ T = []}.

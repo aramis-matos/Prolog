@@ -31,6 +31,9 @@ ap(S,L,M) :- ap(S,_,L,M).
 abar(abar(A0),T) --> a0(A0,T).
 np(np(Nbar,AP),[Case,Phi,[]]) --> 
     nbar(Nbar,[Case,Phi,[]]),ap(AP,[_,Phi,_]).
+np(np(AP,Nbar),[Case,Phi,[]]) --> 
+    ap(AP,[_,Phi,_]),
+    nbar(Nbar,[Case,Phi,[]]).
 np(np(Nbar),T) --> nbar(Nbar,T).
 np(S,L,M) :- np(S,_,L,M).
 nbar(nbar(N0),T) --> n0(N0,T).
