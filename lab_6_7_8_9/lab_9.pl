@@ -1,5 +1,9 @@
 :- [lab_8].
 
+cp(cp(Cbar),T) -->
+    cbar(Cbar,T).
+cbar(cbar(C0,IP),[decl]) -->
+    c0(C0),ip(IP,_).
 advp(advp(Advbar),T) -->
     advbar(Advbar,T).
 advbar(advbar(Adv0),T) -->
